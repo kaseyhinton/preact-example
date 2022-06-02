@@ -1,10 +1,12 @@
-// Serve only the static files form the dist directory
-app.use(express.static(__dirname + "/build"));
-app.use(favicon(__dirname + "/build/favicon.ico"));
-app.get("/*", function (req, res) {
-  res.setHeader(
-    "Cache-Control",
-    "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0"
-  );
-  res.sendFile(path.join(__dirname + "/build/index.html"));
+const path = require("path");
+const express = require("express");
+const app = express(); // create express app
+
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "build", "index.html"));
+});
+
+// start express server on port 5000
+app.listen(5000, () => {
+  console.log("server started on port 5000");
 });
