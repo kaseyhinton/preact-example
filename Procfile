@@ -1,1 +1,1 @@
-web: npm run bulid && cd build && npm run serve
+web: node server.js
